@@ -10,9 +10,12 @@ sudo apt-get update && sudo apt-get upgrade
 
 #install apache
 
-sudo apt-get install "Apache Secure" -y
+sudo apt-get install apache2 -y
 
 
+
+#ensure apache is on
+sudo systemctl start apache2
 
 #create a group and add the ubuntu user to it
 
@@ -42,8 +45,3 @@ find /var/www -type f -exec chmod 0664 {} +
 
 echo "Hello, World!" > /var/www/html/index.html
 
-
-
-#ensure apache is on
-
-sudo systemctl start apache2 && sudo systemctl enable apache2

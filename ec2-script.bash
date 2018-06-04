@@ -21,7 +21,10 @@ ssh -i $keypath/$keyname.pem ubuntu@$ec2dns
 sudo apt-get update && sudo apt-get upgrade
 
 #install apache
-sudo apt-get install "Apache Secure" -y
+sudo apt-get install apache2 -y
+
+#ensure apache is on
+sudo systemctl start apache2
 
 #create a group and add the ubuntu user to it
 groupadd www
@@ -37,6 +40,3 @@ find /var/www -type f -exec chmod 0664 {} +
 
 # set Apache's index.html file to display the text "Hello, World!"
 echo "Hello, World!" > /var/www/html/index.html
-
-#ensure apache is on
-sudo systemctl start apache2 && sudo systemctl enable apache2
